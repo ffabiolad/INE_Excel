@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaciado de datos INE</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.4/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-c2avRhQQGbhxQeG/AJZ8SwxJPTgK00FQqOVNiZdH6LqTlul/qMkvy2yfp6Q7nPRV9ENYRmM15xMlU8ioKhFajg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3023/3023991.png" type="image/png">
+
+
+</head>
+<body>
+    <div id="container">
+        <h5>Pegar en el cuadro de texto el texto escaneado después de tomar una foto a la INE</h5>
+        <h6>(Pegar el texto escaneado desde "NOMBRE" hasta el último dato: "VIGENCIA")</h6>
+        
+     
+        <!-- Estilo para el título -->
+        <h1 class="titulo">Vaciado de datos INE</h1>
+        <textarea id="textoEscaneado" placeholder="Pegue aquí el texto escaneado"></textarea>
+        <br>
+        <label for="telefono">Teléfono:</label>
+        <!-- Estilo para el campo de teléfono -->
+        <input type="text" id="telefono" class="input-text">
+        <br>
+        <!-- Estilo para el botón de extraer datos -->
+        <button id="btnExtraer" class="btn-extraer">Extraer Datos</button>
+        <br>
+        <div id="resultado"></div>
+        <!-- Estilo para el botón de exportar a Excel -->
+        <button id="btnExportarExcel" class="btn-exportar">Exportar a Excel</button>
+    </div>
+
+    <div>
+    <section>
+        <h6>Todos los campos deben ser ser llenados para poder enviar los datos y que se almacenen.</h6>
+        <h6>No se pueden agregar INEs en donde la clave de elector ya ha sido registrada anteriormente.</h6>
+        <h6>Para detectar las secciones, se busca un numero entre 0100 y 0500 por lo que no se detectará automaticamente un número fuera de este rango.</h6>
+        <h6>Para eliminar alguna INE registrada contactese con un administrador de la BD o elimínelo manualmente desde el archivo Excel.</h6>
+        <h6>Para que el vaciado de datos automático funcione de la mejor manera el texto debe verse algo así o tener una estructura similar a la siguiente:</h6>
+        <h6>NOMBRE <br>
+            LOPEZ <br>
+            PEREZ<br>
+            JOSE RAMON<br>
+            DOMICILIO<br>
+            C CALLE FLORES 4038<br>
+            FRACC MISION DE SAN JOSE 20297<br>
+            AGUASCALIENTES, AGS.<br>
+            CLAVE DE ELECTOR LPJRLS02076101H890<br>
+            CURP<br>
+            AÑO DE REGISTRO<br>
+            LPJRLM020701HASMRSA4<br>
+            2020 00<br>
+            FECHA DE NACIMIENTO<br>
+            01/07/2000<br>
+            SECCIÓN<br>
+            0164<br>
+            VIGENCIA<br>
+            2020 - 2030</h6>
+            <h6>El uso de el link a esta pagina y sus accesos debe ser supervisado, ya que cualquier persona con acceso podría modificar los datos</h6>
+    </section>
+    </div>
+
+<!-- Firebase y otros scripts -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+
+<p>prueba</p>
+
+<!-- Script para SweetAlert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- Archivo con las funciones de extracción y exportación -->
+<script src="extraccion_datos.js"></script>
+<script src="exportar.js"></script>
+</body>
+</html>
